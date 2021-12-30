@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.text :description
       t.decimal :price
       t.boolean :sold, default: false
-      t.integer :rating
+      t.integer :quantity, default: 1
       t.string :image
       t.references :seller, foreign_key: { to_table: 'users' }
       t.references :buyer, foreign_key: { to_table: 'users' }
