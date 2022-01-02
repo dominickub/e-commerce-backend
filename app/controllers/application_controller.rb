@@ -5,6 +5,15 @@ class ApplicationController < ActionController::API
 
     private
 
+    def find_item
+        @item = Item.find(params[:id])
+        end
+    end
+
+    def find_rating
+        @rating = Rating.find(params[:id])
+    end
+
     def current_user # memoization
         @current_user ||= User.find_by(id: session[:user_id])
      end
