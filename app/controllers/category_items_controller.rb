@@ -1,3 +1,0 @@
-class CategoryItemsController < ApplicationController
-
-end
