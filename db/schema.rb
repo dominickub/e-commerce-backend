@@ -38,17 +38,15 @@ ActiveRecord::Schema.define(version: 2021_12_30_190607) do
     t.integer "quantity", default: 1
     t.string "image"
     t.bigint "seller_id"
-    t.bigint "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
   create_table "ratings", force: :cascade do |t|
     t.integer "rating"
     t.text "comment"
-    t.string "item_id"
+    t.integer "item_id"
     t.bigint "seller_id"
     t.bigint "buyer_id"
     t.datetime "created_at", precision: 6, null: false
@@ -67,7 +65,6 @@ ActiveRecord::Schema.define(version: 2021_12_30_190607) do
 
   add_foreign_key "category_items", "categories"
   add_foreign_key "category_items", "items"
-  add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "ratings", "users", column: "buyer_id"
   add_foreign_key "ratings", "users", column: "seller_id"

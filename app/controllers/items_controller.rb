@@ -1,32 +1,40 @@
-class ItemsController < ApplicationController
 
+class ItemsController < ApplicationController
+  before_action :find_item, only: [:destroy,:update,:purchased_item]
+  skip_before_action :authenticate_user, only: [:create,:update,:index,:purchased_item]
     def create
-        if seller_id == @current_user
         item = Item.create!(items_params)
-        end
+        render json: item, status: :created
     end 
 
     def destroy
-        if seller_id == @current_user
+        if @item.seller_id == @current_user.id
             @item.destroy
         end
     end
 
+    def index 
+        item = Item.all
+        render json: item, status: :ok
+    end
+
     def update
-        if seller_id == @current_user
+        #if @item.seller_id == @current_user.id
             @item.update!(items_params)
-        end
+        #end
     end
     
     def purchased_item
-        if buyer_id == @current_user
-            @item.update!(sold: true)
-        end
-    end
+        #if @item.seller_id != @current_user.id 
+           @item.update!(quantity: @item.quantity - params[:quantity])
+           render json: @item, status: :ok
+
+       # end
+    end 
 
     private 
 
     def items_params
-        params.permit(:name, :description, :price, :sold, :quantity, :image, :seller)
+        params.permit(:name, :description, :price, :sold, :quantity, :image, :seller_id,:buyer_id)
     end
 end   
