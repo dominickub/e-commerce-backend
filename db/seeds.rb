@@ -18,3 +18,15 @@ item1 = Item.create( name: "one punch man", description: "funny figure", price: 
 rating1 = Rating.create( rating: 10, comment: "Awesome product",seller_id: user2.id, buyer_id: user1.id, item_id: item1.id)
 
 cart1 = Cartlist.create(buyer_id: user2.id, item_id: item1.id)
+
+50.times do
+    Item.create(
+      name: Faker::Commerce.product_name,
+      description: Faker::Food.description,
+      price: Faker::Commerce.price(range: 0..10.0, as_string: true),
+      quantity: 1,
+      image: Faker::Avatar.image,
+      category: Faker::Commerce.department(max: 5),
+      seller_id: user2.id,
+    )
+  end
