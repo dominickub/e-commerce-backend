@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2022_01_06_042909) do
 
   create_table "cartlists", force: :cascade do |t|
     t.integer "item_id"
-    t.string "quantity"
+    t.integer "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
