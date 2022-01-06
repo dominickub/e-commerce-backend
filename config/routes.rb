@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   #  post '/signup', to: 'users#create'
    post '/login',to: 'sessions#create'
    patch '/purchase/:id', to: 'items#purchased_item'
+   get '/me', to: 'users#show'
+   
 end
+
