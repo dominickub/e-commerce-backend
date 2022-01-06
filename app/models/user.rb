@@ -4,6 +4,8 @@ class User < ApplicationRecord
     has_many :sold_items, class_name: 'Item', foreign_key: 'seller_id',  dependent: :nullify
     has_secure_password
 
+    has_and_belongs_to_many :cart_list
+
     validates :username, presence: true, uniqueness: true
     validates :email, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/, presence: true, uniqueness: true
 end

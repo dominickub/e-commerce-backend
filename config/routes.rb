@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cartlists
   resources :ratings
   resources :category_items
   resources :categories
