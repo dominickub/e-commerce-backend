@@ -1,0 +1,3 @@
+class CartlistsController < ApplicationController
+    
+end

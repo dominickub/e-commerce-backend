@@ -12,7 +12,7 @@ Item.destroy_all
 user1 = User.create( username: "Dom", email: "dom@flatiron.com", password: "12345", password_confirmation: "12345")
 user2 = User.create( username: "Pema", email: "pema@flatiron.com", password: "2345", password_confirmation: "2345")
 
-item1 = Item.create( name: "one punch man", description: "funny figure", price: 10, quantity: 1, image: "no image", seller_id: user2.id)
+item1 = Item.create( name: "one punch man", description: "funny figure", price: 10, quantity: 1, image: "https://m.media-amazon.com/images/I/71K9Zjuj-fL._AC_SY606_.jpg", seller_id: user2.id)
 
 rating1 = Rating.create( rating: 10, comment: "Awesome product",seller_id: user2.id, buyer_id: user1.id, item_id: item1.id)
 

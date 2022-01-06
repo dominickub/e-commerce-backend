@@ -7,7 +7,21 @@ class ApplicationController < ActionController::API
 
     before_action :authenticate_user 
 
+    def current_shopping_cart
+
+        if authenticate_user?
+            @cartlist = @current_user.cartlist
+        else
+            @cartlist = Cartlist.create
+            session[:cartlist] = @cartlist.id
+        end
+    end
+
+  
+
     private
+
+    def 
 
     def find_item
         @item = Item.find(params[:id])

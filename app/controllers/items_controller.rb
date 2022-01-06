@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
 
     def index 
         item = Item.all
-        render json: item, status: :ok
+        render json: item, include: :seller,  status: :ok
     end
 
     def update
