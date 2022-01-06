@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   has_many :category_items
   has_many :categories, through: :category_items
   
-  has_and_belongs_to_many :cartlist
+  has_and_belongs_to_many :cartlists
 
   validates :name, presence: true
 end

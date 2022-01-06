@@ -12,10 +12,15 @@ class ApplicationController < ActionController::API
         if authenticate_user?
             @cartlist = @current_user.cartlist
         else
+            if session[:cartlist]
+                @cartlist= Cartlist.find(session[:cartlist])
+            else
             @cartlist = Cartlist.create
             session[:cartlist] = @cartlist.id
+            end
         end
     end
+
 
   
 
